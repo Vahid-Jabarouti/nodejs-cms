@@ -16,12 +16,12 @@ module.exports = class Application {
     this.setupExpress()
     this.setMongoConnection()
     this.setConfig()
-  
+    this.setRouters()
   }
 
   setupExpress() {
     const server = http.createServer(app)
-    server.listen(3000, () => console.log('Listening on port 3000'))
+    server.listen(3000, () => console.log('Listening on port http://localhost:3000'))
   }
 
   setMongoConnection() {
@@ -50,9 +50,12 @@ module.exports = class Application {
     app.use(flash())
 
 
-    app.get('/', (req, res) => {
-      res.json('Hello ROOCKET!')
-    })
+  }
+
+  setRouters() {
+    app.use(require('./routes/api/index.js'))
+    app.use(require('./routes/web/index.js'))
+
   }
 }
 
