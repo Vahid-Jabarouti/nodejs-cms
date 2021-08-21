@@ -1,13 +1,14 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-//Admin Router
-const adminRouter = require('./admin')
-router.use('/admin', adminRouter)
+// Admin Router
+const adminRouter = require('app/routes/web/admin');
+router.use('/admin' , adminRouter);
 
-//Home Router
-const HomeRouter = require('./home')
-router.use('/', HomeRouter)
+// Home Router
+const homeRouter = require('app/routes/web/home');
+router.use('/' , homeRouter);
 
-module.exports = router
 
+
+module.exports = router;
